@@ -1,0 +1,337 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+[x-cloak] {
+	display: none !important;
+}
+
+.app-frame {
+	background-color: #eef2f7;
+	background-image: radial-gradient(circle at 88% 4%, rgba(45, 212, 191, 0.13), transparent 24rem), radial-gradient(circle at 45% 100%, rgba(99, 102, 241, 0.08), transparent 30rem);
+}
+
+.app-topbar {
+	position: relative;
+	z-index: 30;
+	background-color: var(--sidebar-bg, rgba(15, 23, 42, 0.86));
+	background-image: linear-gradient(110deg, rgba(17, 24, 39, 0.72) 0%, rgba(23, 37, 84, 0.42) 52%, rgba(15, 118, 110, 0.38) 150%);
+	backdrop-filter: blur(22px) saturate(145%);
+	-webkit-backdrop-filter: blur(22px) saturate(145%);
+	box-shadow: 0 12px 30px rgba(15, 23, 42, 0.16);
+}
+
+.app-topbar .topbar-link {
+	display: inline-flex;
+	align-items: center;
+	border-radius: 0.75rem;
+	padding: 0.6rem 0.78rem;
+	font-size: 0.75rem;
+	font-weight: 700;
+	color: rgba(255, 255, 255, 0.68);
+	transition: all 180ms ease;
+}
+
+.app-topbar .topbar-link:hover,
+.app-topbar .topbar-link-active {
+	background: rgba(255, 255, 255, 0.12);
+	color: white;
+}
+
+.topbar-dropdown {
+	position: absolute;
+	top: calc(100% + 0.65rem);
+	z-index: 50;
+	overflow: hidden;
+	border: 1px solid #e2e8f0;
+	border-radius: 0.9rem;
+	background: white;
+	padding: 0.35rem;
+	box-shadow: 0 18px 45px rgba(15, 23, 42, 0.18);
+}
+
+.topbar-dropdown-link {
+	display: block;
+	border-radius: 0.6rem;
+	padding: 0.58rem 0.75rem;
+	font-size: 0.75rem;
+	color: #475569;
+}
+
+.topbar-dropdown-link:hover { background: #f1f5f9; color: #0f172a; }
+.mobile-top-link { border-radius: 0.7rem; padding: 0.7rem 0.8rem; font-size: 0.8rem; font-weight: 700; color: rgba(255,255,255,.75); }
+.mobile-top-link:hover { background: rgba(255,255,255,.1); color: white; }
+.app-topbar + .app-sidebar { display: none !important; }
+
+.app-sidebar {
+	background: var(--sidebar-bg, rgba(15, 23, 42, 0.86));
+	background-clip: padding-box;
+	background-image: linear-gradient(145deg, rgba(255, 255, 255, 0.09), transparent 38%), radial-gradient(circle at 12% 0%, rgba(45, 212, 191, 0.18), transparent 15rem), radial-gradient(circle at 100% 84%, rgba(59, 130, 246, 0.12), transparent 18rem);
+	backdrop-filter: blur(22px) saturate(145%);
+	-webkit-backdrop-filter: blur(22px) saturate(145%);
+	box-shadow: 10px 0 35px rgba(15, 23, 42, 0.14);
+	border-right-color: rgba(148, 163, 184, 0.22) !important;
+}
+
+button,
+a,
+input,
+select,
+textarea {
+	transition: color 180ms ease, background-color 180ms ease, border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+}
+
+button:not(:disabled):hover,
+a.inline-flex:hover {
+	transform: translateY(-1px);
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+	box-shadow: 0 0 0 3px rgba(20, 184, 166, 0.14) !important;
+}
+
+.app-sidebar > div:first-child {
+	background: transparent;
+}
+
+.app-sidebar > div:first-child > a,
+.app-sidebar > div:first-child > div:last-child {
+	background-color: transparent !important;
+}
+
+html .app-frame .bg-white,
+html.theme-transparent .app-frame .bg-white,
+html.theme-dark .app-frame .bg-white {
+	background-color: var(--surface-bg, rgba(255, 255, 255, 0.78)) !important;
+	backdrop-filter: blur(18px) saturate(130%);
+	-webkit-backdrop-filter: blur(18px) saturate(130%);
+}
+
+html.theme-transparent .app-sidebar {
+	background-color: var(--sidebar-bg, rgba(15, 23, 42, 0.72));
+}
+
+:root {
+	--receipt-width: 80mm;
+	--page-bg: #f4f7fb;
+	--page-text: #172033;
+	--muted-text: #64748b;
+	--line: #e2e8f0;
+	--surface: #ffffff;
+	--surface-muted: #f8fafc;
+	--accent: #0f766e;
+	--accent-soft: #ccfbf1;
+}
+
+html[data-receipt-width='58'] {
+	--receipt-width: 58mm;
+}
+
+html.theme-dark {
+	color-scheme: dark;
+	--page-bg: #0b1220;
+	--page-text: #edf4ff;
+	--muted-text: #9aabc2;
+	--line: #293a52;
+	--surface: #142033;
+	--surface-muted: #1b2a3f;
+	--accent: #2dd4bf;
+	--accent-soft: #134e4a;
+}
+
+body {
+	background: var(--page-bg);
+	color: var(--page-text);
+}
+
+.app-frame {
+	background-color: var(--page-bg);
+}
+
+html.theme-dark .app-frame {
+	background-image: radial-gradient(circle at 90% 0%, rgba(45, 212, 191, 0.08), transparent 25rem), radial-gradient(circle at 40% 100%, rgba(59, 130, 246, 0.08), transparent 30rem);
+}
+
+/* Keep the utility-heavy Blade views visually consistent across both themes. */
+html.theme-dark .app-frame .bg-white,
+html.theme-dark .app-frame .bg-white\/90,
+html.theme-dark .app-frame .bg-white\/80 {
+	background-color: var(--surface) !important;
+}
+
+html.theme-dark .app-frame .bg-gray-50,
+html.theme-dark .app-frame .bg-gray-100 {
+	background-color: var(--surface-muted) !important;
+}
+
+html.theme-dark .app-frame [class*="text-gray-900"],
+html.theme-dark .app-frame [class*="text-gray-800"],
+html.theme-dark .app-frame [class*="text-gray-700"],
+html.theme-dark .app-frame [class*="text-slate-900"],
+html.theme-dark .app-frame [class*="text-slate-800"] {
+	color: var(--page-text) !important;
+}
+
+html.theme-dark .app-frame [class*="text-gray-600"],
+html.theme-dark .app-frame [class*="text-gray-500"],
+html.theme-dark .app-frame [class*="text-gray-400"],
+html.theme-dark .app-frame [class*="text-slate-600"],
+html.theme-dark .app-frame [class*="text-slate-500"],
+html.theme-dark .app-frame [class*="text-slate-400"] {
+	color: var(--muted-text) !important;
+}
+
+html.theme-dark .app-frame [class*="border-gray-"],
+html.theme-dark .app-frame [class*="border-slate-"] {
+	border-color: var(--line) !important;
+}
+
+html.theme-dark .app-frame input:not([type='checkbox']):not([type='radio']),
+html.theme-dark .app-frame select,
+html.theme-dark .app-frame textarea {
+	background-color: #0f1a2b !important;
+	border-color: #3a4d68 !important;
+	color: var(--page-text) !important;
+}
+
+html.theme-dark .app-page-header {
+	background-color: rgba(20, 32, 51, .92) !important;
+}
+
+html.theme-dark .topbar-dropdown {
+	border-color: var(--line);
+	background: #142033;
+	box-shadow: 0 18px 45px rgba(0, 0, 0, .32);
+}
+
+html.theme-dark .topbar-dropdown-link {
+	color: #cbd5e1;
+}
+
+html.theme-dark .topbar-dropdown-link:hover {
+	background: #22334b;
+	color: #fff;
+}
+
+html.theme-dark .topbar-dropdown .border-slate-100 {
+	border-color: var(--line) !important;
+}
+
+html.theme-dark .app-frame .shadow-sm,
+html.theme-dark .app-frame .shadow-md {
+	box-shadow: 0 10px 28px rgba(0, 0, 0, .16) !important;
+}
+
+html.theme-dark .app-frame .divide-gray-200 > :not([hidden]) ~ :not([hidden]) {
+	border-color: var(--line) !important;
+}
+
+html.theme-dark .app-frame .hover\:bg-gray-50:hover,
+html.theme-dark .app-frame .hover\:bg-gray-100:hover {
+	background-color: #22334b !important;
+}
+
+html.theme-dark .app-frame .hover\:text-gray-900:hover,
+html.theme-dark .app-frame .hover\:text-gray-800:hover {
+	color: #fff !important;
+}
+
+html.theme-dark .app-frame .text-indigo-700,
+html.theme-dark .app-frame .text-teal-700 {
+	color: #5eead4 !important;
+}
+
+html.theme-dark .app-frame .bg-gray-900 {
+	background-color: #f1f5f9 !important;
+	color: #0f172a !important;
+}
+
+html.theme-transparent body {
+	background-color: #dbeafe;
+	background-image: var(--user-wallpaper, linear-gradient(135deg, #dbeafe 0%, #dcfce7 52%, #ffedd5 100%));
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-attachment: fixed;
+}
+
+html.theme-transparent .min-h-screen.bg-gray-100 {
+	background-color: rgba(226, 232, 240, 0.42) !important;
+	backdrop-filter: blur(2px);
+}
+
+html.theme-transparent .app-frame {
+	background-color: rgba(226, 232, 240, 0.28) !important;
+	background-image: linear-gradient(rgba(226, 232, 240, 0.22), rgba(226, 232, 240, 0.22)), var(--user-wallpaper, linear-gradient(135deg, #dbeafe 0%, #dcfce7 52%, #ffedd5 100%)) !important;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-attachment: fixed;
+	backdrop-filter: blur(2px);
+}
+
+html.theme-transparent .bg-white {
+	background-color: rgba(255, 255, 255, 0.82) !important;
+	backdrop-filter: blur(14px);
+}
+
+html.theme-transparent .bg-gray-50 {
+	background-color: rgba(248, 250, 252, 0.72) !important;
+}
+
+@media print {
+	@page {
+		margin: 4mm;
+	}
+
+	@page report {
+		size: A4 landscape;
+		margin: 10mm;
+	}
+
+	html,
+	body {
+		background: #fff !important;
+		color: #111827 !important;
+	}
+
+	body * {
+		visibility: hidden !important;
+	}
+
+	.receipt-print,
+	.receipt-print * {
+		visibility: visible !important;
+	}
+
+	.receipt-print {
+		position: absolute !important;
+		inset: 0 auto auto 0 !important;
+		width: var(--receipt-width) !important;
+		max-width: var(--receipt-width) !important;
+		margin: 0 !important;
+		padding: 0 !important;
+		background: #fff !important;
+		color: #111827 !important;
+	}
+
+	.report-print,
+	.report-print * {
+		visibility: visible !important;
+	}
+
+	.report-print {
+		page: report;
+		max-width: none !important;
+		margin: 0 !important;
+		padding: 0 !important;
+		background: #fff !important;
+		color: #111827 !important;
+	}
+
+	.report-print .shadow-sm {
+		box-shadow: none !important;
+	}
+}
